@@ -22,17 +22,23 @@ Developers who use Claude Code (or similar AI agents) as their primary coding to
 ## Roadmap
 
 ### Quick Wins
-- [ ] Auth scaffold (email/password, sessions, protected routes)
-- [ ] API error handling middleware with typed error responses
-- [ ] Database seed with realistic data + reset command
-- [ ] `/onboard` command — auto-generate CLAUDE.md context from existing code
-- [ ] Healthcheck dashboard page (shows API status, DB connection, test results)
+- [x] Auth scaffold (email/password, sessions, protected routes)
+- [x] API error handling middleware with typed error responses
+- [x] Database seed with realistic data + reset command
+- [x] `/onboard` command — auto-generate CLAUDE.md context from existing code
+- [x] Healthcheck dashboard page (shows API status, DB connection, test results)
 
 ### Big Bets
-- [ ] Self-maintaining CLAUDE.md — a hook that updates rules when project structure changes
-- [ ] `/deploy` command — one-command deployment to Vercel/Fly.io with env validation
-- [ ] Protected zones — mark files as read-only in `.claude/settings.json` so agents can't touch them
+- [x] Self-maintaining CLAUDE.md — `/evolve-harness` reviews logs and proposes rule updates
+- [x] `/deploy` command — one-command deployment with env validation
+- [x] Protected zones — read-only files list in CLAUDE.md (immutable harness)
 
 ### Moonshots
-- [ ] Agent scorecard — track success rate, discards, token usage per feature across sessions
-- [ ] `/collab` — human writes the test, agent implements. Or vice versa. True pair programming loop.
+- [x] Agent scorecard — `/scorecard` tracks kept/discarded ratio from experiments.tsv
+- [x] `/collab` — human writes test, agent implements. Or vice versa.
+
+### Research Incorporated
+- [x] Karpathy autoresearch — experiment loop, git-as-undo, NEVER STOP
+- [x] Stripe Minions — blueprint pattern, deterministic nodes, 2-round CI cap
+- [x] oh-my-claudecode — commit trailers, deslop pass, ralph persistence
+- [x] Stanford Meta-Harness — raw failure logs, evidence-based rules, lean gates
