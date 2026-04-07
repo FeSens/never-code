@@ -1,4 +1,5 @@
 import { users } from "@never-code/db/schema";
+import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { publicProcedure, router } from "../trpc.js";
@@ -16,7 +17,7 @@ export const userRouter = router({
       const user = await ctx.db.query.users.findFirst({
         where: eq(users.id, input.id),
       });
-      if (!user) throw new Error("User not found");
+      if (!user) throw new TRPCError({ code: "NOT_FOUND", message: "User not found" });
       return user;
     }),
 });

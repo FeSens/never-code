@@ -1,4 +1,5 @@
 import { loginSchema, registerSchema } from "@never-code/shared/validators";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { AuthService } from "../../services/auth-service.js";
 import { publicProcedure, router } from "../trpc.js";
@@ -16,7 +17,7 @@ export const authRouter = router({
   login: publicProcedure.input(loginSchema).mutation(async ({ ctx, input }) => {
     const authService = new AuthService(ctx.db);
     const result = await authService.login(input);
-    if (!result) throw new Error("Invalid credentials");
+    if (!result) throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid credentials" });
     return {
       user: { id: result.user.id, email: result.user.email, name: result.user.name },
       sessionId: result.session.id,

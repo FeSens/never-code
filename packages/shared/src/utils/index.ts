@@ -1,4 +1,5 @@
 export { hashPassword, verifyPassword } from "./auth.js";
+export { AppError, notFound, badRequest, unauthorized, conflict } from "./errors.js";
 
 export function formatDate(date: Date): string {
   return date.toISOString().split("T")[0] ?? "";
