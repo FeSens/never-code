@@ -61,10 +61,31 @@ Next.js frontend, Hono + tRPC API, PostgreSQL + Drizzle ORM.
 - Never mock the database in integration tests.
 - Use factories from `tests/helpers/factories.ts` for test data.
 
+### Test Selection Guide
+- **Unit tests** (`pnpm test:unit`): After ANY logic change. Always run.
+- **Integration tests** (`pnpm test:integration`): After API route or database changes.
+- **E2E tests** (`/test-e2e` or `pnpm test:e2e`): After UI changes, auth flows, or user journey changes. Run SPECIFIC tests, not the full suite.
+
+### E2E Tests (Playwright)
+- E2E tests run against a REAL backend (Hono API on :4000) and REAL database.
+- Playwright config auto-starts both servers. DB is auto-migrated/seeded.
+- Run specific tests: `cd apps/web && PLAYWRIGHT_HTML_OPEN=never npx playwright test tests/e2e/<file> --reporter=line`
+- Always set `PLAYWRIGHT_HTML_OPEN=never` when running E2E.
+- On failure: read terminal output first, then screenshots in `apps/web/test-results/`.
+- For structured failure data: read `apps/web/test-results/results.json`.
+- Use `getByRole`, `getByLabel`, `getByText` locators. NEVER use CSS selectors.
+- For complex UI assertions, use `toMatchAriaSnapshot()` for LLM-friendly diffs.
+
+## Worktree Agents
+- Subagents dispatched with `isolation: "worktree"` get a fresh copy of the repo.
+- Each worktree agent must run `pnpm install` before any work.
+- Worktree agents should run `docker compose up -d` if they need the database.
+- Results are returned as branches that can be merged or cherry-picked.
+
 ## Before Completing Any Task
 
 1. `pnpm typecheck` — zero errors
 2. `pnpm test:unit` — all pass
 3. `pnpm lint` — all pass
 4. If API changes: `pnpm test:integration`
-5. If UI changes: relevant E2E tests
+5. If UI changes: relevant E2E tests (`/test-e2e`)
