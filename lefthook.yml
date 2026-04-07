@@ -1,0 +1,21 @@
+# Lefthook - Git hooks manager
+# Install: pnpm add -D lefthook && pnpm exec lefthook install
+
+pre-commit:
+  parallel: true
+  commands:
+    format-staged:
+      glob: "*.{ts,tsx,js,jsx,json,css,md}"
+      run: pnpm exec biome check --write --staged --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+    lint-staged:
+      glob: "*.{ts,tsx,js,jsx}"
+      run: pnpm exec biome lint --staged --no-errors-on-unmatched {staged_files}
+
+pre-push:
+  parallel: false
+  commands:
+    typecheck:
+      run: pnpm typecheck
+    unit-tests:
+      run: pnpm test:unit --reporter=dot

@@ -1,0 +1,40 @@
+{
+  "name": "never-code",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "test:unit": "turbo test:unit",
+    "test:integration": "turbo test:integration",
+    "test:e2e": "pnpm --filter @never-code/web test:e2e",
+    "test:watch": "turbo test:watch",
+    "test:coverage": "turbo test:coverage",
+    "lint": "biome lint .",
+    "lint:ci": "biome ci .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "typecheck": "turbo typecheck",
+    "check": "biome ci . && turbo typecheck && turbo test:unit",
+    "db:generate": "pnpm --filter @never-code/db generate",
+    "db:migrate": "pnpm --filter @never-code/db migrate",
+    "db:push": "pnpm --filter @never-code/db push",
+    "db:studio": "pnpm --filter @never-code/db studio",
+    "db:seed": "pnpm --filter @never-code/db seed",
+    "clean": "turbo clean && rm -rf node_modules",
+    "prepare": "lefthook install"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
+    "lefthook": "^1.7.0",
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
