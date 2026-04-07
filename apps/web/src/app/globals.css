@@ -360,6 +360,52 @@ p {
   text-decoration: underline;
 }
 
+/* ── Health page ── */
+
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.health-card {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.health-indicator {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.health-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.health-value {
+  font-size: 0.9rem;
+  color: var(--fg);
+}
+
+.status-ok .health-indicator {
+  color: var(--accent);
+}
+
+.status-error .health-indicator {
+  color: #ff4444;
+}
+
+.status-error .health-value {
+  color: #ff4444;
+}
+
 /* ── Footer ── */
 
 footer {

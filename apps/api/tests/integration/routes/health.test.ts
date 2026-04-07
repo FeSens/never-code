@@ -12,4 +12,16 @@ describe("GET /health", () => {
     expect(body.status).toBe("ok");
     expect(body.timestamp).toBeDefined();
   });
+
+  it("returns detailed health with uptime", async () => {
+    const res = await app.request("/health?detailed=true");
+    const body = (await res.json()) as {
+      status: string;
+      uptime: number;
+      services: Record<string, string>;
+    };
+    expect(res.status).toBe(200);
+    expect(body.uptime).toBeTypeOf("number");
+    expect(body.services).toBeDefined();
+  });
 });
