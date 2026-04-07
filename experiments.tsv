@@ -1,2 +1,3 @@
 timestamp	commit	status	typecheck	tests	lint	description
 2026-04-07T14:35:36-03:00	3e4c008	kept	pass	pass	pass	landing page: dark theme, terminal aesthetic, 6 sections
+2026-04-07T14:41:37-03:00	188991b	kept	pass	pass	pass	staggered fade-in, glow pulse, blinking cursor, stats grid, principles list
