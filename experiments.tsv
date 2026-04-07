@@ -4,3 +4,4 @@ timestamp	commit	status	typecheck	tests	lint	description
 2026-04-07T14:42:32-03:00	41d4aa6	kept	pass	pass	pass	CRT scanline overlay, 7th section delay, footer delay adjusted
 2026-04-07T15:45:13-03:00	d69b651	kept	pass	pass	pass	auth: password hashing utility (scrypt, 5 tests)
 2026-04-07T15:48:57-03:00	cf9e95e	kept	pass	pass	pass	auth: sessions table, passwordHash column, auth validators
+2026-04-07T15:50:40-03:00	7c85de9	kept	pass	pass	pass	auth: AuthService with register/login/validate/logout, 8 tests
