@@ -12,6 +12,31 @@ const COMMANDS = [
   { name: "/review", desc: "Audit changes against conventions" },
 ];
 
+const STATS = [
+  { value: "2", label: "Max retries" },
+  { value: "0", label: "JS shipped" },
+  { value: "100%", label: "Type-safe" },
+];
+
+const PRINCIPLES = [
+  {
+    key: "Immutable gates",
+    desc: "Lint, typecheck, and test configs are read-only. Agents fix code, not rules.",
+  },
+  {
+    key: "Git as undo",
+    desc: "Every experiment is a commit. Keep what works, reset what doesn't.",
+  },
+  {
+    key: "Deterministic first",
+    desc: "Everything that can be deterministic is. LLMs only handle what requires reasoning.",
+  },
+  {
+    key: "2-round cap",
+    desc: "Max 2 fix attempts per gate. No infinite loops. Escalate to human.",
+  },
+];
+
 export default function HomePage() {
   return (
     <main>
@@ -27,6 +52,18 @@ export default function HomePage() {
           deterministic quality gates. Experiment loops iterate toward goals. Agents write code,
           machines verify it, humans trust the result.
         </p>
+      </section>
+
+      <section>
+        <h2>By The Numbers</h2>
+        <div className="stats-grid">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="stat">
+              <span className="stat-value">{stat.value}</span>
+              <span className="stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section>
@@ -67,6 +104,17 @@ export default function HomePage() {
           {"      ↓\n"}
           <span className="decision">{"[KEEP or DISCARD]"}</span>
         </div>
+      </section>
+
+      <section>
+        <h2>Principles</h2>
+        <ul className="principles">
+          {PRINCIPLES.map((p) => (
+            <li key={p.key}>
+              <strong>{p.key}.</strong> {p.desc}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <footer>Built by agents, verified by machines, trusted by humans.</footer>

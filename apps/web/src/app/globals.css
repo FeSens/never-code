@@ -14,6 +14,41 @@
   --font-mono: "SF Mono", "Fira Code", "Cascadia Code", "JetBrains Mono", monospace;
 }
 
+/* ── Animations ── */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 4px rgba(0, 255, 136, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
+  }
+}
+
+/* ── Base ── */
+
 body {
   margin: 0;
   font-family: var(--font-mono);
@@ -29,15 +64,48 @@ main {
   padding: 4rem 1.5rem;
 }
 
+/* ── Sections with staggered fade-in ── */
+
 section {
   margin-bottom: 3.5rem;
+  opacity: 0;
+  animation: fade-in 0.6s ease-out forwards;
 }
+
+section:nth-child(1) {
+  animation-delay: 0s;
+}
+section:nth-child(2) {
+  animation-delay: 0.15s;
+}
+section:nth-child(3) {
+  animation-delay: 0.3s;
+}
+section:nth-child(4) {
+  animation-delay: 0.45s;
+}
+section:nth-child(5) {
+  animation-delay: 0.6s;
+}
+section:nth-child(6) {
+  animation-delay: 0.75s;
+}
+
+/* ── Typography ── */
 
 h1 {
   font-size: 2.5rem;
   color: var(--accent);
   margin: 0 0 0.5rem;
   letter-spacing: -0.02em;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+h1::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+  color: var(--accent);
+  font-weight: 300;
 }
 
 h2 {
@@ -61,6 +129,8 @@ p {
   margin-bottom: 3rem;
 }
 
+/* ── Stack grid ── */
+
 .stack-grid {
   display: flex;
   flex-wrap: wrap;
@@ -73,7 +143,15 @@ p {
   padding: 0.4rem 0.8rem;
   font-size: 0.85rem;
   color: var(--accent);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
+
+.stack-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.15);
+}
+
+/* ── Command list ── */
 
 .command-list {
   list-style: none;
@@ -105,6 +183,8 @@ p {
   font-size: 0.85rem;
 }
 
+/* ── Loop diagram ── */
+
 .loop-diagram {
   background: var(--code-bg);
   border: 1px solid var(--border);
@@ -128,10 +208,68 @@ p {
   color: #ffd700;
 }
 
+/* ── Stats ── */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.stat {
+  text-align: center;
+  padding: 1rem;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Principles ── */
+
+.principles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.principles li {
+  padding: 0.5rem 0;
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--fg);
+  font-size: 0.9rem;
+}
+
+.principles li strong {
+  color: var(--accent);
+}
+
+/* ── Footer ── */
+
 footer {
   text-align: center;
   color: var(--muted);
   font-size: 0.8rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
+  opacity: 0;
+  animation: fade-in 0.6s ease-out 0.9s forwards;
 }
