@@ -29,7 +29,7 @@ main working directory.
 2. Implement backend changes (API routes, services, tRPC routers) using TDD:
    - Write failing tests first
    - Implement minimum code to pass
-   - Run pnpm --filter @code-claw/api test:unit
+   - Run pnpm --filter @never-code/api test:unit
 3. Run pnpm typecheck
 4. Run pnpm exec biome check --write .
 5. If any gate fails, fix it (max 2 attempts per gate)
@@ -42,7 +42,7 @@ main working directory.
 2. Implement frontend changes (pages, components) using TDD:
    - Write failing tests first
    - Implement minimum code to pass
-   - Run pnpm --filter @code-claw/web test:unit
+   - Run pnpm --filter @never-code/web test:unit
 3. Run pnpm typecheck
 4. Run pnpm exec biome check --write .
 5. If any gate fails, fix it (max 2 attempts per gate)

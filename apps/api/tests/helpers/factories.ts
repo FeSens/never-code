@@ -1,4 +1,4 @@
-import type { CreateUserInput } from "@code-claw/shared/validators";
+import type { CreateUserInput } from "@never-code/shared/validators";
 
 let counter = 0;
 

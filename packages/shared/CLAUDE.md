@@ -20,7 +20,7 @@ src/
 This package MUST have no runtime dependencies other than `zod`. It is imported by both frontend and backend — heavy dependencies here bloat both bundles.
 
 - NEVER add `lodash`, `date-fns`, or any utility library. Write the function yourself.
-- NEVER import from `@code-claw/db`, `@code-claw/api`, or `@code-claw/web`. This package is at the bottom of the dependency graph.
+- NEVER import from `@never-code/db`, `@never-code/api`, or `@never-code/web`. This package is at the bottom of the dependency graph.
 
 ### Types
 
@@ -97,14 +97,14 @@ The package uses `exports` in `package.json` for subpath imports:
 
 Consumers import via:
 ```typescript
-import { createUserSchema } from "@code-claw/shared/validators";
-import type { User } from "@code-claw/shared/types";
-import { formatDate } from "@code-claw/shared";
+import { createUserSchema } from "@never-code/shared/validators";
+import type { User } from "@never-code/shared/types";
+import { formatDate } from "@never-code/shared";
 ```
 
 Rules:
 - When adding a new subpath, update BOTH `exports` in `package.json` AND the barrel `src/index.ts`.
-- Use subpath imports (`@code-claw/shared/validators`) for clarity. Avoid importing everything from the root.
+- Use subpath imports (`@never-code/shared/validators`) for clarity. Avoid importing everything from the root.
 
 ## Testing
 

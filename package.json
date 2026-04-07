@@ -1,5 +1,5 @@
 {
-  "name": "code-claw",
+  "name": "never-code",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "turbo test",
     "test:unit": "turbo test:unit",
     "test:integration": "turbo test:integration",
-    "test:e2e": "pnpm --filter @code-claw/web test:e2e",
+    "test:e2e": "pnpm --filter @never-code/web test:e2e",
     "test:watch": "turbo test:watch",
     "test:coverage": "turbo test:coverage",
     "lint": "biome lint .",
@@ -18,11 +18,11 @@
     "format:check": "biome format .",
     "typecheck": "turbo typecheck",
     "check": "biome ci . && turbo typecheck && turbo test:unit",
-    "db:generate": "pnpm --filter @code-claw/db generate",
-    "db:migrate": "pnpm --filter @code-claw/db migrate",
-    "db:push": "pnpm --filter @code-claw/db push",
-    "db:studio": "pnpm --filter @code-claw/db studio",
-    "db:seed": "pnpm --filter @code-claw/db seed",
+    "db:generate": "pnpm --filter @never-code/db generate",
+    "db:migrate": "pnpm --filter @never-code/db migrate",
+    "db:push": "pnpm --filter @never-code/db push",
+    "db:studio": "pnpm --filter @never-code/db studio",
+    "db:seed": "pnpm --filter @never-code/db seed",
     "clean": "turbo clean && rm -rf node_modules",
     "prepare": "lefthook install"
   },

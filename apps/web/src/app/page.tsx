@@ -41,7 +41,7 @@ export default function HomePage() {
   return (
     <main>
       <section>
-        <h1>Code Claw</h1>
+        <h1>Never Code</h1>
         <p className="tagline">The gold standard for agentic fullstack engineering.</p>
       </section>
 

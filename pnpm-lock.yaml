@@ -23,18 +23,18 @@ importers:
 
   apps/api:
     dependencies:
-      '@code-claw/db':
-        specifier: workspace:*
-        version: link:../../packages/db
-      '@code-claw/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@hono/node-server':
         specifier: ^1.19.13
         version: 1.19.13(hono@4.12.12)
       '@hono/trpc-server':
         specifier: ^0.3.0
         version: 0.3.4(@trpc/server@11.16.0(typescript@5.9.3))(hono@4.12.12)
+      '@never-code/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@never-code/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@trpc/server':
         specifier: ^11.0.0
         version: 11.16.0(typescript@5.9.3)
@@ -72,10 +72,10 @@ importers:
 
   apps/web:
     dependencies:
-      '@code-claw/api':
+      '@never-code/api':
         specifier: workspace:*
         version: link:../api
-      '@code-claw/shared':
+      '@never-code/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@tanstack/react-query':

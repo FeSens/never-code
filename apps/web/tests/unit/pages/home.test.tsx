@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 describe("HomePage", () => {
   it("renders hero heading", () => {
     render(<HomePage />);
-    expect(screen.getByRole("heading", { level: 1, name: "Code Claw" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: "Never Code" })).toBeInTheDocument();
   });
 
   it("renders tagline", () => {

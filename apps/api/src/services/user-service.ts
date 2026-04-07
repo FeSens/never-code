@@ -1,6 +1,6 @@
-import type { Database } from "@code-claw/db";
-import { users } from "@code-claw/db/schema";
-import type { CreateUserInput } from "@code-claw/shared/validators";
+import type { Database } from "@never-code/db";
+import { users } from "@never-code/db/schema";
+import type { CreateUserInput } from "@never-code/shared/validators";
 import { eq } from "drizzle-orm";
 
 export class UserService {

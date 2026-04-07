@@ -2,12 +2,12 @@
 
 ## Overview
 
-A single-page landing for the Code Claw repo. Dark theme, monospace, terminal aesthetic. Explains what the repo is, the tech stack, and the agentic harness.
+A single-page landing for the Never Code repo. Dark theme, monospace, terminal aesthetic. Explains what the repo is, the tech stack, and the agentic harness.
 
 ## Content Sections
 
 ### 1. Hero
-- Title: "Code Claw"
+- Title: "Never Code"
 - Tagline: "The gold standard for agentic fullstack engineering"
 
 ### 2. What Is This
@@ -60,5 +60,5 @@ A single-page landing for the Code Claw repo. Dark theme, monospace, terminal ae
 
 ## Testing
 
-- E2E: verify heading "Code Claw" visible, "The Stack" section visible, at least one slash command visible
+- E2E: verify heading "Never Code" visible, "The Stack" section visible, at least one slash command visible
 - Unit: not needed (no logic, pure markup)

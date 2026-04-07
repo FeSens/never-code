@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test.describe("Home page", () => {
   test("displays hero heading and tagline", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: "Code Claw" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Never Code" })).toBeVisible();
     await expect(page.getByText("gold standard for agentic fullstack engineering")).toBeVisible();
   });
 

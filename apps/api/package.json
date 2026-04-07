@@ -1,5 +1,5 @@
 {
-  "name": "@code-claw/api",
+  "name": "@never-code/api",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -27,8 +27,8 @@
   "dependencies": {
     "@hono/node-server": "^1.19.13",
     "@hono/trpc-server": "^0.3.0",
-    "@code-claw/db": "workspace:*",
-    "@code-claw/shared": "workspace:*",
+    "@never-code/db": "workspace:*",
+    "@never-code/shared": "workspace:*",
     "@trpc/server": "^11.0.0",
     "drizzle-orm": "^0.39.0",
     "hono": "^4.7.0",

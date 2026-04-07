@@ -44,7 +44,7 @@ Feature: $ARGUMENTS
 
 ### Phase 6b: Visual Verification [CONDITIONAL — UI changes only]
 15. If you changed any file in `apps/web/src/app/` or `apps/web/src/components/`:
-    - [DETERMINISTIC] Start dev server if not running: `pnpm --filter @code-claw/web dev &` (wait for ready)
+    - [DETERMINISTIC] Start dev server if not running: `pnpm --filter @never-code/web dev &` (wait for ready)
     - [DETERMINISTIC] Take screenshot of each affected page:
       ```
       cd apps/web && npx playwright screenshot --wait-for-timeout=2000 "http://localhost:3000<path>" /tmp/visual-check.png

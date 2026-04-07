@@ -30,14 +30,14 @@ export default defineConfig({
   // reuseExistingServer: true means if they're already running, skip starting.
   webServer: [
     {
-      command: "pnpm --filter @code-claw/api dev",
+      command: "pnpm --filter @never-code/api dev",
       url: "http://localhost:4000/health",
       reuseExistingServer: !process.env.CI,
       timeout: 30_000,
       stdout: "pipe",
     },
     {
-      command: "pnpm --filter @code-claw/web dev",
+      command: "pnpm --filter @never-code/web dev",
       url: "http://localhost:3000",
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,

@@ -45,8 +45,8 @@ Follow the established pattern in `src/trpc/routers/user.ts`:
 ```typescript
 import { z } from "zod";
 import { eq } from "drizzle-orm";
-import { users } from "@code-claw/db/schema";
-import { createUserSchema } from "@code-claw/shared/validators";
+import { users } from "@never-code/db/schema";
+import { createUserSchema } from "@never-code/shared/validators";
 import { publicProcedure, router } from "../trpc.js";
 
 export const userRouter = router({
@@ -68,7 +68,7 @@ export const userRouter = router({
 
 Rules:
 - One router file per domain in `src/trpc/routers/`.
-- ALWAYS validate inputs with Zod. Use schemas from `@code-claw/shared/validators` when they exist.
+- ALWAYS validate inputs with Zod. Use schemas from `@never-code/shared/validators` when they exist.
 - Compose routers in `src/trpc/router.ts`.
 - Use `.query()` for reads, `.mutation()` for writes. NEVER use `.mutation()` for reads.
 - Access the database via `ctx.db`. NEVER import the db client directly in routers.
@@ -79,7 +79,7 @@ Rules:
 Follow the established pattern in `src/services/user-service.ts`:
 
 ```typescript
-import type { Database } from "@code-claw/db";
+import type { Database } from "@never-code/db";
 
 export class UserService {
   constructor(private db: Database) {}
@@ -130,8 +130,8 @@ import { z } from "zod";
 import { eq } from "drizzle-orm";
 
 // Workspace packages
-import { users } from "@code-claw/db/schema";
-import { createUserSchema } from "@code-claw/shared/validators";
+import { users } from "@never-code/db/schema";
+import { createUserSchema } from "@never-code/shared/validators";
 
 // Local imports (with .js extension for ESM)
 import { publicProcedure, router } from "../trpc.js";

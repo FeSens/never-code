@@ -6,7 +6,7 @@ Usage: /screenshot [path]
 
 ## Steps
 
-1. Ensure the dev server is running. If not: `pnpm --filter @code-claw/web dev &` and wait for it.
+1. Ensure the dev server is running. If not: `pnpm --filter @never-code/web dev &` and wait for it.
 
 2. Take the screenshot:
 ```bash

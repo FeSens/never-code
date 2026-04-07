@@ -1,4 +1,4 @@
-# Code Claw — TypeScript Fullstack Monorepo
+# Never Code — TypeScript Fullstack Monorepo
 
 Next.js frontend, Hono + tRPC API, PostgreSQL + Drizzle ORM.
 

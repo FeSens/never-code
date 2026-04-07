@@ -1,5 +1,5 @@
-import { users } from "@code-claw/db/schema";
-import { createUserSchema } from "@code-claw/shared/validators";
+import { users } from "@never-code/db/schema";
+import { createUserSchema } from "@never-code/shared/validators";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { publicProcedure, router } from "../trpc.js";

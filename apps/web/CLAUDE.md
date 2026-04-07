@@ -111,7 +111,7 @@ Rules:
 
 ## Common Mistakes to Avoid
 
-- NEVER import from `@code-claw/api` internals. Only import the `AppRouter` type via `@code-claw/api/trpc`.
+- NEVER import from `@never-code/api` internals. Only import the `AppRouter` type via `@never-code/api/trpc`.
 - NEVER use `useEffect` for data fetching. Use Server Components or tRPC hooks.
 - NEVER add `"use client"` to `layout.tsx` — it breaks streaming and layouts must be Server Components.
 - NEVER hardcode colors. Use CSS variables from `globals.css`.
