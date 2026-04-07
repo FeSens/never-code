@@ -1,3 +1,4 @@
+import { AppError } from "@never-code/shared";
 import { loginSchema, registerSchema } from "@never-code/shared/validators";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
@@ -7,11 +8,18 @@ import { publicProcedure, router } from "../trpc.js";
 export const authRouter = router({
   register: publicProcedure.input(registerSchema).mutation(async ({ ctx, input }) => {
     const authService = new AuthService(ctx.db);
-    const result = await authService.register(input);
-    return {
-      user: { id: result.user.id, email: result.user.email, name: result.user.name },
-      sessionId: result.session.id,
-    };
+    try {
+      const result = await authService.register(input);
+      return {
+        user: { id: result.user.id, email: result.user.email, name: result.user.name },
+        sessionId: result.session.id,
+      };
+    } catch (error) {
+      if (error instanceof AppError && error.code === "CONFLICT") {
+        throw new TRPCError({ code: "CONFLICT", message: error.message });
+      }
+      throw error;
+    }
   }),
 
   login: publicProcedure.input(loginSchema).mutation(async ({ ctx, input }) => {
