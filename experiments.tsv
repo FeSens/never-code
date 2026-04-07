@@ -1,12 +1,2 @@
 timestamp	commit	status	typecheck	tests	lint	description
-2026-04-07T14:35:36-03:00	3e4c008	kept	pass	pass	pass	landing page: dark theme, terminal aesthetic, 6 sections
-2026-04-07T14:41:37-03:00	188991b	kept	pass	pass	pass	staggered fade-in, glow pulse, blinking cursor, stats grid, principles list
-2026-04-07T14:42:32-03:00	41d4aa6	kept	pass	pass	pass	CRT scanline overlay, 7th section delay, footer delay adjusted
-2026-04-07T15:45:13-03:00	d69b651	kept	pass	pass	pass	auth: password hashing utility (scrypt, 5 tests)
-2026-04-07T15:48:57-03:00	cf9e95e	kept	pass	pass	pass	auth: sessions table, passwordHash column, auth validators
-2026-04-07T15:50:40-03:00	7c85de9	kept	pass	pass	pass	auth: AuthService with register/login/validate/logout, 8 tests
-2026-04-07T15:51:56-03:00	e4c7be7	kept	pass	pass	pass	auth: tRPC router with register/login/me/logout, 4 tests
-2026-04-07T16:03:19-03:00	471eca2	kept	pass	pass	pass	auth: login + register pages, 8 tests, dark terminal styling
-2026-04-07T16:17:00-03:00	1819a45	kept	pass	pass	pass	healthcheck page: API status cards, 4 tests (1 integration, 3 unit)
-2026-04-07T16:18:00-03:00	d6f5836	kept	pass	pass	pass	API errors, idempotent seed, /evolve-harness /deploy /scorecard /collab commands
-2026-04-07T16:56:00-03:00	aa44f53	kept	pass	pass	pass	roadmap complete: errors, seed, health, evolve-harness, deploy, scorecard, collab
+2026-04-07T18:19:02-03:00	8219cc1	kept	pass	pass	pass	harness: wire coverage into test:unit, fix lint, add tests for 80%+ coverage, create hooks

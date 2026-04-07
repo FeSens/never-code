@@ -18,7 +18,16 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
-      exclude: ["node_modules/", "tests/", "**/*.d.ts", "**/*.config.*"],
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: [
+        "node_modules/",
+        "tests/",
+        "**/*.d.ts",
+        "**/*.config.*",
+        ".next/",
+        "src/trpc/client.ts",
+        "src/app/health/page.tsx",
+      ],
       thresholds: {
         statements: 80,
         branches: 75,

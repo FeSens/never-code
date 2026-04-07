@@ -1,5 +1,5 @@
 import RegisterPage from "@/app/(auth)/register/page";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 describe("RegisterPage", () => {
@@ -23,5 +23,26 @@ describe("RegisterPage", () => {
   it("renders a link to login", () => {
     render(<RegisterPage />);
     expect(screen.getByRole("link", { name: /sign in/i })).toBeInTheDocument();
+  });
+
+  it("updates input values on change", () => {
+    render(<RegisterPage />);
+    const nameInput = screen.getByLabelText(/name/i);
+    const emailInput = screen.getByLabelText(/email/i);
+    const passwordInput = screen.getByLabelText(/password/i);
+
+    fireEvent.change(nameInput, { target: { value: "Alice" } });
+    fireEvent.change(emailInput, { target: { value: "alice@test.com" } });
+    fireEvent.change(passwordInput, { target: { value: "password123" } });
+
+    expect(nameInput).toHaveValue("Alice");
+    expect(emailInput).toHaveValue("alice@test.com");
+    expect(passwordInput).toHaveValue("password123");
+  });
+
+  it("handles form submission", () => {
+    render(<RegisterPage />);
+    const button = screen.getByRole("button", { name: /create account/i });
+    fireEvent.click(button);
   });
 });

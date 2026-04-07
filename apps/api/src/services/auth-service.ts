@@ -21,15 +21,19 @@ export class AuthService {
       })
       .returning();
 
+    if (!user) throw new Error("Failed to insert user");
+
     const [session] = await this.db
       .insert(sessions)
       .values({
-        userId: user!.id,
+        userId: user.id,
         expiresAt: new Date(Date.now() + SESSION_DURATION_MS),
       })
       .returning();
 
-    return { user: user!, session: session! };
+    if (!session) throw new Error("Failed to insert session");
+
+    return { user, session };
   }
 
   async login(input: LoginInput) {
@@ -50,7 +54,9 @@ export class AuthService {
       })
       .returning();
 
-    return { user, session: session! };
+    if (!session) throw new Error("Failed to insert session");
+
+    return { user, session };
   }
 
   async validateSession(sessionId: string) {
