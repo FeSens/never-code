@@ -11,6 +11,9 @@ export function buildUser(overrides: Partial<CreateUserInput> = {}): CreateUserI
   };
 }
 
-export function buildUsers(count: number, overrides: Partial<CreateUserInput> = {}): CreateUserInput[] {
+export function buildUsers(
+  count: number,
+  overrides: Partial<CreateUserInput> = {},
+): CreateUserInput[] {
   return Array.from({ length: count }, () => buildUser(overrides));
 }

@@ -1,7 +1,7 @@
-import { z } from "zod";
-import { eq } from "drizzle-orm";
 import { users } from "@never-code/db/schema";
 import { createUserSchema } from "@never-code/shared/validators";
+import { eq } from "drizzle-orm";
+import { z } from "zod";
 import { publicProcedure, router } from "../trpc.js";
 
 export const userRouter = router({
@@ -21,10 +21,8 @@ export const userRouter = router({
       return user;
     }),
 
-  create: publicProcedure
-    .input(createUserSchema)
-    .mutation(async ({ ctx, input }) => {
-      const [user] = await ctx.db.insert(users).values(input).returning();
-      return user;
-    }),
+  create: publicProcedure.input(createUserSchema).mutation(async ({ ctx, input }) => {
+    const [user] = await ctx.db.insert(users).values(input).returning();
+    return user;
+  }),
 });

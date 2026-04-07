@@ -1,4 +1,4 @@
-import { createDb, type Database } from "@never-code/db";
+import { type Database, createDb } from "@never-code/db";
 
 let db: Database | undefined;
 
@@ -11,9 +11,9 @@ function getDb(): Database {
   return db;
 }
 
-export interface Context {
+export type Context = {
   db: Database;
-}
+};
 
 export function createContext(): Context {
   return { db: getDb() };

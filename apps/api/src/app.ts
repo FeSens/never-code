@@ -1,10 +1,10 @@
+import { trpcServer } from "@hono/trpc-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
-import { trpcServer } from "@hono/trpc-server";
-import { appRouter } from "./trpc/router.js";
-import { createContext } from "./trpc/context.js";
 import { healthRoute } from "./routes/health.js";
+import { createContext } from "./trpc/context.js";
+import { appRouter } from "./trpc/router.js";
 
 export function createApp() {
   const app = new Hono();
@@ -18,7 +18,7 @@ export function createApp() {
     "/trpc/*",
     trpcServer({
       router: appRouter,
-      createContext,
+      createContext: (_opts, _c) => createContext(),
     }),
   );
 

@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
 import { UserService } from "@/services/user-service";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 function createMockDb() {
   return {

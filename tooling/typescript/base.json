@@ -14,9 +14,6 @@
     "verbatimModuleSyntax": true,
     "noUncheckedIndexedAccess": true,
     "noEmit": true,
-    "incremental": true,
-    "declaration": true,
-    "declarationMap": true,
     "sourceMap": true
   },
   "exclude": ["node_modules", "dist", ".next", "coverage"]

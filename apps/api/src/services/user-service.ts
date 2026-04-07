@@ -1,7 +1,7 @@
-import { eq } from "drizzle-orm";
 import type { Database } from "@never-code/db";
 import { users } from "@never-code/db/schema";
 import type { CreateUserInput } from "@never-code/shared/validators";
+import { eq } from "drizzle-orm";
 
 export class UserService {
   constructor(private db: Database) {}
