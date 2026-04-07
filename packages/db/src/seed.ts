@@ -1,3 +1,4 @@
+import { hashPassword } from "@never-code/shared";
 import { createDb, users } from "./index.js";
 
 const DATABASE_URL = process.env.DATABASE_URL;
@@ -10,9 +11,11 @@ const db = createDb(DATABASE_URL);
 async function seed() {
   console.info("Seeding database...");
 
+  const passwordHash = await hashPassword("password123");
+
   await db.insert(users).values([
-    { email: "alice@example.com", name: "Alice" },
-    { email: "bob@example.com", name: "Bob" },
+    { email: "alice@example.com", name: "Alice", passwordHash },
+    { email: "bob@example.com", name: "Bob", passwordHash },
   ]);
 
   console.info("Seeding complete.");

@@ -9,11 +9,6 @@ function createMockDb() {
         findFirst: vi.fn(),
       },
     },
-    insert: vi.fn().mockReturnValue({
-      values: vi.fn().mockReturnValue({
-        returning: vi.fn(),
-      }),
-    }),
   };
 }
 
@@ -40,6 +35,25 @@ describe("UserService", () => {
       db.query.users.findFirst.mockResolvedValue(undefined);
 
       const result = await service.getById("nonexistent");
+
+      expect(result).toBeNull();
+    });
+  });
+
+  describe("getByEmail", () => {
+    it("returns user when found", async () => {
+      const mockUser = { id: "1", name: "Alice", email: "alice@test.com" };
+      db.query.users.findFirst.mockResolvedValue(mockUser);
+
+      const result = await service.getByEmail("alice@test.com");
+
+      expect(result).toEqual(mockUser);
+    });
+
+    it("returns null when not found", async () => {
+      db.query.users.findFirst.mockResolvedValue(undefined);
+
+      const result = await service.getByEmail("nobody@test.com");
 
       expect(result).toBeNull();
     });
