@@ -7,3 +7,5 @@ timestamp	commit	status	typecheck	tests	lint	description
 2026-04-07T15:50:40-03:00	7c85de9	kept	pass	pass	pass	auth: AuthService with register/login/validate/logout, 8 tests
 2026-04-07T15:51:56-03:00	e4c7be7	kept	pass	pass	pass	auth: tRPC router with register/login/me/logout, 4 tests
 2026-04-07T16:03:19-03:00	471eca2	kept	pass	pass	pass	auth: login + register pages, 8 tests, dark terminal styling
+2026-04-07T16:17:00-03:00	1819a45	kept	pass	pass	pass	healthcheck page: API status cards, 4 tests (1 integration, 3 unit)
+2026-04-07T16:18:00-03:00	d6f5836	kept	pass	pass	pass	API errors, idempotent seed, /evolve-harness /deploy /scorecard /collab commands

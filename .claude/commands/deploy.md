@@ -2,25 +2,24 @@ Deploy the application to production.
 
 ## Steps
 
-1. [DETERMINISTIC] Validate environment:
-   - Read `.env.example` and compare to `.env` — all required vars must be set
-   - Run `pnpm build` — must succeed
-   - Run `pnpm check` — all gates must pass
+1. [DETERMINISTIC] Validate:
+   - Read `.env.example`, compare to `.env` — all required vars set?
+   - `pnpm build` — must succeed
+   - `pnpm check` — all gates pass
 
-2. [AGENT] Determine deployment target:
-   - Ask the user: Vercel, Fly.io, Docker, or other?
-   - If not configured yet, help set up the deployment config
+2. [AGENT] Determine target:
+   - Ask: Vercel, Fly.io, Docker, or other?
+   - If not configured: help set up deployment config
 
 3. [DETERMINISTIC] Deploy:
    - Vercel: `npx vercel --prod`
    - Fly.io: `fly deploy`
    - Docker: `docker build -t app . && docker push`
 
-4. [DETERMINISTIC] Post-deploy verification:
-   - Hit the health endpoint on the deployed URL
-   - Verify it returns `{ status: "ok" }`
+4. [DETERMINISTIC] Verify:
+   - Hit health endpoint on deployed URL
+   - Confirm `{ status: "ok" }`
 
-5. Report: deployment URL, status, any warnings.
+5. Report: URL, status, warnings.
 
-## Note
-This is a template command. Customize the deploy target for your project.
+Note: This is a template command. Customize the target for your project.

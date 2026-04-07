@@ -8,19 +8,16 @@ Display agent performance metrics from the experiment log.
 ```
 === Agent Scorecard ===
 Total experiments: <N>
-├── Kept: <N> (<percentage>%)
-├── Discarded: <N> (<percentage>%)
-└── Crashed: <N> (<percentage>%)
+├── Kept: <N> (<percent>%)
+├── Discarded: <N> (<percent>%)
+└── Crashed: <N> (<percent>%)
 
-Keep rate: <percentage>%
+Keep rate: <percent>%
 Current streak: <N> kept in a row
 
-Features shipped: <count unique descriptions>
+Features shipped: <unique descriptions>
 Avg experiments per feature: <total / features>
-
-Last 5 experiments:
-  <timestamp> <status> <description>
 ```
 
-3. If keep rate < 70%: suggest running `/evolve-harness`.
-4. If current streak > 10: celebrate.
+3. If keep rate < 70%: suggest `/evolve-harness`.
+4. If streak > 10: celebrate.

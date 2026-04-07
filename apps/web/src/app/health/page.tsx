@@ -8,6 +8,7 @@ interface HealthResponse {
   status: string;
   timestamp: string;
   uptime: number;
+  services?: Record<string, string>;
 }
 
 async function getHealth(): Promise<HealthResponse | null> {

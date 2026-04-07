@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-// Since it's an async Server Component, we need to test the rendered output
-// For unit tests, we'll test a sync wrapper
 function HealthPageSync() {
   return (
     <main>
