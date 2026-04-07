@@ -25,6 +25,10 @@ For each iteration:
 - Run `pnpm typecheck` — record pass/fail.
 - Run `pnpm test:unit` — record pass/fail.
 - Run `pnpm lint` — record pass/fail.
+- If the change touched UI files (`apps/web/src/app/**` or `apps/web/src/components/**`):
+  - Take screenshot: `cd apps/web && npx playwright screenshot --wait-for-timeout=2000 "http://localhost:3000" /tmp/experiment-screenshot.png`
+  - Read the screenshot with the Read tool.
+  - Evaluate: does the visual result match the hypothesis? Any regressions?
 
 ### 5. Decide [AGENT]
 - **KEEP** if: all gates pass AND the change moves toward the goal.

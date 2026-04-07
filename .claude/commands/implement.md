@@ -42,14 +42,29 @@ Feature: $ARGUMENTS
     - [DETERMINISTIC] Run relevant E2E tests via `/test-e2e`
     - [AGENT] Fix failures if any (max 2 attempts)
 
+### Phase 6b: Visual Verification [CONDITIONAL — UI changes only]
+15. If you changed any file in `apps/web/src/app/` or `apps/web/src/components/`:
+    - [DETERMINISTIC] Start dev server if not running: `pnpm --filter @code-claw/web dev &` (wait for ready)
+    - [DETERMINISTIC] Take screenshot of each affected page:
+      ```
+      cd apps/web && npx playwright screenshot --wait-for-timeout=2000 "http://localhost:3000<path>" /tmp/visual-check.png
+      ```
+    - [AGENT] Read the screenshot with the Read tool. Inspect for:
+      - **Layout**: alignment, spacing, overflow, responsive issues
+      - **Content**: text readable, nothing cut off, no missing sections
+      - **Styling**: colors match theme, fonts correct, no visual glitches
+      - **Consistency**: matches the terminal/dark aesthetic of the rest of the site
+    - [AGENT] If issues found: fix and re-screenshot (max 2 attempts)
+    - If no issues: proceed.
+
 ### Phase 7: Record [DETERMINISTIC]
-15. Run `pnpm check` one final time as the ultimate gate.
-16. Log results to `experiments.tsv`:
+16. Run `pnpm check` one final time as the ultimate gate.
+17. Log results to `experiments.tsv`:
     ```
     echo "$(date -Iseconds)\t$(git rev-parse --short HEAD)\tkept\tpass\tpass\tpass\t$ARGUMENTS" >> experiments.tsv
     ```
-17. Commit all changes: `git add -A && git commit -m "feat: <description>"`
-18. Summarize: what was implemented, what tests were added, files changed.
+18. Commit all changes: `git add -A && git commit -m "feat: <description>"`
+19. Summarize: what was implemented, what tests were added, files changed.
 
 ## Hard Rules
 - MAX 2 retry attempts on any failing gate. Then STOP.
