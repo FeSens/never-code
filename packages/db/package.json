@@ -14,9 +14,9 @@
     }
   },
   "scripts": {
-    "generate": "drizzle-kit generate",
+    "generate": "set -a && . ../../.env && drizzle-kit generate",
     "migrate": "set -a && . ../../.env && drizzle-kit migrate",
-    "push": "drizzle-kit push",
+    "push": "set -a && . ../../.env && drizzle-kit push",
     "studio": "drizzle-kit studio",
     "seed": "tsx --env-file=../../.env src/seed.ts",
     "reset": "tsx --env-file=../../.env src/reset.ts",
