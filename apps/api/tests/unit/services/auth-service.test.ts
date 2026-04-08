@@ -18,11 +18,15 @@ function createMockDb() {
   };
 }
 
-// Mock the password utils
-vi.mock("@never-code/shared", () => ({
-  hashPassword: vi.fn().mockResolvedValue("hashed:password"),
-  verifyPassword: vi.fn(),
-}));
+// Mock the password utils, preserve real AppError
+vi.mock("@never-code/shared", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@never-code/shared")>();
+  return {
+    ...actual,
+    hashPassword: vi.fn().mockResolvedValue("hashed:password"),
+    verifyPassword: vi.fn(),
+  };
+});
 
 import { verifyPassword } from "@never-code/shared";
 
@@ -37,6 +41,23 @@ describe("AuthService", () => {
   });
 
   describe("register", () => {
+    it("throws when email already exists", async () => {
+      const uniqueViolation = new Error("duplicate key value violates unique constraint");
+      db.insert.mockReturnValueOnce({
+        values: vi.fn().mockReturnValue({
+          returning: vi.fn().mockRejectedValue(uniqueViolation),
+        }),
+      });
+
+      await expect(
+        service.register({
+          email: "taken@test.com",
+          name: "Alice",
+          password: "password123",
+        }),
+      ).rejects.toThrow("Email already in use");
+    });
+
     it("creates a user and returns a session", async () => {
       const mockUser = { id: "user-1", email: "alice@test.com", name: "Alice" };
       const mockSession = { id: "session-1", userId: "user-1" };

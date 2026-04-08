@@ -21,21 +21,35 @@ Developers who use Claude Code (or similar AI agents) as their primary coding to
 
 ## Roadmap
 
-### Quick Wins
+### Phase 1 (Complete)
 - [x] Auth scaffold (email/password, sessions, protected routes)
 - [x] API error handling middleware with typed error responses
 - [x] Database seed with realistic data + reset command
 - [x] `/onboard` command — auto-generate CLAUDE.md context from existing code
 - [x] Healthcheck dashboard page (shows API status, DB connection, test results)
-
-### Big Bets
 - [x] Self-maintaining CLAUDE.md — `/evolve-harness` reviews logs and proposes rule updates
 - [x] `/deploy` command — one-command deployment with env validation
 - [x] Protected zones — read-only files list in CLAUDE.md (immutable harness)
-
-### Moonshots
 - [x] Agent scorecard — `/scorecard` tracks kept/discarded ratio from experiments.tsv
 - [x] `/collab` — human writes test, agent implements. Or vice versa.
+
+### Phase 2 (Current)
+
+#### Quick Wins
+- [ ] Wire auth forms to tRPC — login/register pages call the API, show validation errors and loading states, E2E test for full auth flow
+- [ ] `npx create-never-code` CLI — one-command bootstrap (clone, install, Docker, migrate, seed, check)
+- [ ] AGENTS.md cross-agent compatibility — same repo works with Codex, Cursor, Copilot
+- [ ] Session handoff artifacts — `/wrap-up` and `/resume` commands for session persistence
+- [ ] Component library basics — Input, Form, Card, Modal in dark terminal aesthetic
+
+#### Big Bets
+- [ ] Agent cost tracker — token usage per session/command/feature, displayed in scorecard and dashboard
+- [ ] Evaluator agent — separate agent reviews diffs for semantic issues beyond lint/typecheck
+- [ ] Real-time agent dashboard — WebSocket page showing active agents, pass/fail, experiment history
+
+#### Moonshots
+- [ ] Codebase-context MCP server — indexes codebase patterns, teaches agents your team's style
+- [ ] Multi-agent campaign orchestrator — decomposes goals into parallel worktree agents with writer/reviewer roles
 
 ### Research Incorporated
 - [x] Karpathy autoresearch — experiment loop, git-as-undo, NEVER STOP

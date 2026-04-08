@@ -406,6 +406,114 @@ p {
   color: #ff4444;
 }
 
+/* ── Nav bar ── */
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-user {
+  color: var(--fg);
+  font-size: 0.85rem;
+}
+
+.nav-logout {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+}
+
+.nav-logout:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Auth error ── */
+
+.auth-error {
+  color: #ff4444;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+}
+
+/* ── Dashboard ── */
+
+.dashboard-page {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.dashboard-page h1 {
+  animation: none;
+  text-shadow: none;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-page h1::after {
+  content: none;
+}
+
+.dashboard-welcome {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-email {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-logout {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+}
+
+.dashboard-logout:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ── Footer ── */
 
 footer {

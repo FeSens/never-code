@@ -1,5 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const DATABASE_URL =
+  process.env.DATABASE_URL ?? "postgresql://postgres:postgres@localhost:5432/nevercode";
+
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: true,
@@ -35,6 +38,7 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
       timeout: 30_000,
       stdout: "pipe",
+      env: { DATABASE_URL },
     },
     {
       command: "pnpm --filter @never-code/web dev",

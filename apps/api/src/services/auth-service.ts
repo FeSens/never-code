@@ -1,6 +1,6 @@
 import type { Database } from "@never-code/db";
 import { sessions, users } from "@never-code/db/schema";
-import { hashPassword, verifyPassword } from "@never-code/shared";
+import { AppError, hashPassword, verifyPassword } from "@never-code/shared";
 import type { LoginInput, RegisterInput } from "@never-code/shared/validators";
 import { eq } from "drizzle-orm";
 
@@ -12,16 +12,25 @@ export class AuthService {
   async register(input: RegisterInput) {
     const passwordHash = await hashPassword(input.password);
 
-    const [user] = await this.db
-      .insert(users)
-      .values({
-        email: input.email,
-        name: input.name,
-        passwordHash,
-      })
-      .returning();
+    let user: typeof users.$inferSelect;
+    try {
+      const [inserted] = await this.db
+        .insert(users)
+        .values({
+          email: input.email,
+          name: input.name,
+          passwordHash,
+        })
+        .returning();
 
-    if (!user) throw new Error("Failed to insert user");
+      if (!inserted) throw new Error("Failed to insert user");
+      user = inserted;
+    } catch (error) {
+      if (error instanceof Error && error.message.includes("unique constraint")) {
+        throw new AppError("Email already in use", "CONFLICT", 409);
+      }
+      throw error;
+    }
 
     const [session] = await this.db
       .insert(sessions)
