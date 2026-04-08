@@ -138,6 +138,21 @@ After completing a feature, review all changes for AI slop:
 - Simplify anything over-engineered
 - Run `pnpm check` after cleanup to verify nothing broke
 
+## Autonomous Loop Phases
+
+The recursive self-improvement loop cycles through these phases:
+
+```
+IMPLEMENTING → QA → EVOLVING → DREAMING → IMPLEMENTING → ...
+```
+
+- **IMPLEMENTING**: Pick highest-impact feature, run `/ralph`. Repeat until queue empty.
+- **QA**: Build verification, browser soak test, E2E, code review, deslop.
+- **EVOLVING**: Meta-loop. Analyze experiments.tsv for failure patterns, run `/evolve-harness`, update CLAUDE.md rules. The process improves itself.
+- **DREAMING**: Run `/dream-bigger`, score new features, write to loop-state.json.
+
+The Stop hook (`stop-loop.mjs`) drives transitions. State lives in `loop-state.json`.
+
 ## Experiment Tracking
 
 Every implementation attempt is logged to `experiments.tsv`:
@@ -161,6 +176,18 @@ NEVER destroy working state during cleanup or verification:
 - Don't delete generated files during deslop
 - Don't reset database state unless explicitly asked
 - If a command modifies files, ensure the originals are recoverable via git
+
+## Session Crash Recovery
+
+If the autonomous loop was running and you're starting a fresh session:
+
+1. Read `loop-state.json` — it survives crashes. Check `phase`, `currentFeature`, and feature statuses.
+2. Read `git log --oneline -10` — see what was committed in the last session.
+3. Read `experiments.tsv` tail — see what was tried and what failed.
+4. If a feature is `in_progress`: check if its stories were committed. If yes, mark it `done` in loop-state.json. If partially done, continue from where it left off.
+5. If phase is `qa`: check which QA steps already passed (non-null in `qa` object). Continue from the first null/failed step.
+
+The stop hook includes recovery context in its messages. Trust the state file over memory.
 
 ## Worktree Agents
 

@@ -138,7 +138,8 @@ const state = {
   currentFeature: null,
   features,
   qa: {
-    screenshots: null,
+    build: null,
+    soak: null,
     e2e: null,
     review: null,
     deslop: null,

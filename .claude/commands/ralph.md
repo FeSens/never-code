@@ -98,7 +98,10 @@ After ALL stories are complete:
 
 14. Run `pnpm check` one final time.
 15. Log final result to experiments.tsv.
-16. Print summary:
+16. **Update loop-state.json** (if it exists):
+    - Read the file, find the current feature by ID, set `"status": "done"`.
+    - Write the file back. This tells the autonomous loop this feature is complete.
+17. Print summary:
     - Stories completed: N/N
     - Commits: list each
     - Files changed: count
