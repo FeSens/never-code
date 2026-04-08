@@ -134,7 +134,7 @@ function handleImplementing(state) {
 
   // No features left — transition to QA
   state.phase = "qa";
-  state.qa = { screenshots: null, e2e: null, review: null, deslop: null };
+  state.qa = { build: null, screenshots: null, e2e: null, review: null, deslop: null };
   writeState(state);
   blockStop(
     `All features for cycle ${state.cycle} are complete! Transitioning to QA audit.\n\nStep 1 of 4: SCREENSHOTS\n- Discover all routes in apps/web/src/app/ (look for page.tsx files).\n- Screenshot each route using /screenshot <path>.\n- Visually inspect each screenshot for broken layouts, missing content, styling issues.\n- Fix any issues found.\n- When all screenshots look good, update loop-state.json: set qa.screenshots to "pass".`,
@@ -143,27 +143,33 @@ function handleImplementing(state) {
 
 function handleQa(state) {
   const qa = state.qa;
-  const steps = ["screenshots", "e2e", "review", "deslop"];
+  const steps = ["build", "screenshots", "e2e", "review", "deslop"];
   const instructions = {
+    build:
+      "QA Step 1/5: BUILD VERIFICATION\n" +
+      "- Run: pnpm build\n" +
+      "- This catches bundler-specific errors (webpack resolution, missing modules) that typecheck misses.\n" +
+      "- If the build fails, fix the issue and re-run.\n" +
+      `- When it passes, update loop-state.json: set qa.build to "pass".`,
     screenshots:
-      "QA Step 1/4: SCREENSHOTS\n" +
+      "QA Step 2/5: SCREENSHOTS\n" +
       "- Discover all routes in apps/web/src/app/ (look for page.tsx files).\n" +
       "- Screenshot each route using /screenshot <path>.\n" +
       "- Visually inspect for broken layouts, missing content, styling issues.\n" +
       "- Fix any issues found.\n" +
       `- When done, update loop-state.json: set qa.screenshots to "pass".`,
     e2e:
-      "QA Step 2/4: E2E TESTS\n" +
+      "QA Step 3/5: E2E TESTS\n" +
       "- Run: cd apps/web && PLAYWRIGHT_HTML_OPEN=never npx playwright test --reporter=line\n" +
       "- If tests fail, fix the issues and re-run.\n" +
       `- When all pass, update loop-state.json: set qa.e2e to "pass".`,
     review:
-      "QA Step 3/4: CODE REVIEW\n" +
+      "QA Step 4/5: CODE REVIEW\n" +
       "- Run /review on all changes made during this cycle.\n" +
       "- Fix any issues the review identifies.\n" +
       `- When clean, update loop-state.json: set qa.review to "pass".`,
     deslop:
-      "QA Step 4/4: DESLOP\n" +
+      "QA Step 5/5: DESLOP\n" +
       "- Run /deslop to clean up AI-generated bloat across the entire cycle.\n" +
       "- Run pnpm check to verify nothing broke.\n" +
       `- When clean, update loop-state.json: set qa.deslop to "pass".`,

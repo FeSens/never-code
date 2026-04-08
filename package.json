@@ -17,7 +17,7 @@
     "format": "biome format --write .",
     "format:check": "biome format .",
     "typecheck": "turbo typecheck",
-    "check": "biome ci . && turbo typecheck && turbo test:unit",
+    "check": "biome ci . && turbo typecheck && turbo test:unit && turbo build",
     "db:generate": "pnpm --filter @never-code/db generate",
     "db:migrate": "pnpm --filter @never-code/db migrate",
     "db:push": "pnpm --filter @never-code/db push",

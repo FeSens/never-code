@@ -174,6 +174,8 @@ NEVER destroy working state during cleanup or verification:
 1. `pnpm typecheck` — zero errors
 2. `pnpm test:unit` — all pass
 3. `pnpm lint` — all pass
-4. If API changes: `pnpm test:integration`
-5. If UI changes: relevant E2E tests (`/test-e2e`)
-6. Log results to `experiments.tsv`
+4. `pnpm build` — catches bundler-specific errors (webpack resolution, missing modules)
+5. If API changes: `pnpm test:integration`
+6. If UI changes: relevant E2E tests (`/test-e2e`)
+7. If UI changes: browser smoke test — open affected pages, verify no runtime errors
+8. Log results to `experiments.tsv`

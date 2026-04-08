@@ -41,9 +41,11 @@ LOOP (per story):
 │   ┌─ pnpm typecheck
 │   ├─ pnpm test:unit
 │   ├─ pnpm lint
+│   ├─ pnpm build — catches bundler-specific errors (webpack, etc.)
 │   ├─ IF API changes: pnpm test:integration
 │   ├─ IF UI changes: pnpm test:e2e (specific file)
-│   └─ IF UI changes: screenshot → Read → visual inspect
+│   ├─ IF UI changes: screenshot → Read → visual inspect
+│   └─ IF UI changes: browser smoke test — open each affected page, verify no runtime errors
 │
 ├─ 3d. Fix or Discard [AGENT]
 │   IF any gate fails:
